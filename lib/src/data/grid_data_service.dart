@@ -14,6 +14,7 @@ class GridDataService {
 
         GridCell cell = new GridCell();
         cell.text = column.formatter.getText(value);
+        cell.text = column.sanitizer.sanitize(cell.text);
         cell.html = column.encoder.getHtml(value, cell.text);
         cell.width = column.width;
         cell.paddingLeft = column.presenter.getPaddingLeft(value);
