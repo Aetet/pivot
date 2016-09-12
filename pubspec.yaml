@@ -1,0 +1,3 @@
+name: pivot
+dependencies:
+  intl: any
