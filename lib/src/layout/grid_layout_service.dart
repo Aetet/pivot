@@ -33,7 +33,7 @@ class GridLayoutService {
     }
   }
 
-  int getRowIndex(List<GridRow> rows, int position) {
+  int getRowIndex(List<GridRow> rows, num position) {
     if (rows.length == 0) return 0;
     if (position <= rows.first.position) return 0;
     if (position >= rows.last.position) return rows.length - 1;
