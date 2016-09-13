@@ -32,4 +32,29 @@ class GridLayoutService {
       position += row.height;
     }
   }
+
+  int getRowIndex(List<GridRow> rows, int position) {
+    if (rows.length == 0) return 0;
+    if (position <= rows.first.position) return 0;
+    if (position >= rows.last.position) return rows.length - 1;
+
+    int low = 0;
+    int middle = 0;
+    int high = rows.length - 1;
+
+    while(low < high) {
+      middle = (low + (high - low) / 2).floor();
+
+      if (position >= rows[middle].position) {
+        if (low == middle) break;
+        low = middle;
+      }
+      else {
+        if (high == middle) break;
+        high = middle;
+      }
+    }
+
+    return middle;
+  }
 }
