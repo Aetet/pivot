@@ -10,15 +10,14 @@ class GridDataService {
       GridRow row = new GridRow();
 
       for (GridColumn column in columns) {
-        dynamic value = column.provider.getValue(element);
-
         GridCell cell = new GridCell();
-        cell.text = column.formatter.getText(value);
+        cell.value = column.provider.getValue(element);
+        cell.text = column.formatter.getText(cell.value);
         cell.text = column.sanitizer.sanitize(cell.text);
-        cell.html = column.encoder.getHtml(value, cell.text);
+        cell.html = column.encoder.getHtml(cell.value, cell.text);
         cell.width = column.width;
-        cell.paddingLeft = column.presenter.getPaddingLeft(value);
-        cell.backgroundColor = column.presenter.getBackgroundColor(value);
+        cell.paddingLeft = column.presenter.getPaddingLeft(cell.value);
+        cell.backgroundColor = column.presenter.getBackgroundColor(cell.value);
 
         row.cells.add(cell);
       }

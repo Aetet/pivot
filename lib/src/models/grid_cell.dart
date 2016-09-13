@@ -1,4 +1,5 @@
 class GridCell {
+  dynamic value;
   String text;
   String html;
   num width;
