@@ -16,7 +16,7 @@ class GridLayoutService {
       row.height = _options.rowHeight;
 
       for (GridCell cell in row.cells) {
-        cell.height = _renderer.getTextHeight(cell.text, cell.width - cell.paddingLeft);
+        cell.height = _renderer.getTextHeight(cell.text, cell.width - cell.styles.paddingLeft);
         row.height = max(row.height, cell.height);
       }
 

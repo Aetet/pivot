@@ -16,8 +16,7 @@ class GridDataService {
         cell.text = column.sanitizer.sanitize(cell.text);
         cell.html = column.encoder.getHtml(cell.value, cell.text);
         cell.width = column.width;
-        cell.paddingLeft = column.presenter.getPaddingLeft(cell.value);
-        cell.backgroundColor = column.presenter.getBackgroundColor(cell.value);
+        cell.styles = column.presenter.getStyles(cell.value);
 
         row.cells.add(cell);
       }

@@ -1,9 +1,10 @@
+import 'package:pivot/src/models/grid_cell_styles.dart';
+
 class GridCell {
   dynamic value;
   String text;
   String html;
   num width;
   num height;
-  num paddingLeft;
-  String backgroundColor;
+  GridCellStyles styles;
 }
