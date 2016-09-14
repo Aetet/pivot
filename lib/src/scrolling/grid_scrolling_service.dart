@@ -9,9 +9,9 @@ class GridScrollingService {
 
   GridScrollingService(this._layout, this._options);
 
-  GridVisibleRange getVisibleRange(List<GridRow> rows, num offset, num height) {
-    int first = _layout.getRowIndex(rows, offset - _options.excess);
-    int last = _layout.getRowIndex(rows, offset + height + _options.excess);
+  GridVisibleRange getVisibleRange(List<GridRow> rows, num scrollTop, num clientHeight) {
+    int first = _layout.getRowIndex(rows, scrollTop - _options.excess);
+    int last = _layout.getRowIndex(rows, scrollTop + clientHeight + _options.excess);
 
     return new GridVisibleRange(first, last);
   }
