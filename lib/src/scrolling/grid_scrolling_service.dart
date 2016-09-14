@@ -17,6 +17,8 @@ class GridScrollingService {
   }
 
   List<GridRow> getVisibleRows(List<GridRow> rows, GridVisibleRange range) {
-    return rows.sublist(range.first, range.last > 0 ? range.last - 1 : 0);
+    if (range.first < 0 || range.last < 0) return [];
+
+    return rows.sublist(range.first, range.last + 1);
   }
 }

@@ -34,7 +34,7 @@ class GridLayoutService {
   }
 
   int getRowIndex(List<GridRow> rows, num position) {
-    if (rows.length == 0) return 0;
+    if (rows.length == 0) return -1;
     if (position <= rows.first.position) return 0;
     if (position >= rows.last.position) return rows.length - 1;
 
