@@ -2,3 +2,5 @@ name: pivot
 dependencies:
   intl: any
   quiver: '>=0.21.0<0.22.0'
+dev_dependencies:
+  test: any
