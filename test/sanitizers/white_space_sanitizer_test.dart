@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:pivot/src/sanitizers/white_space_sanitizer.dart';
+import 'package:test/test.dart';
 
 void main() {
   WhiteSpaceSanitizer sanitizer = new WhiteSpaceSanitizer();
