@@ -1,4 +1,4 @@
-import 'package:pivot/src/providers/self_value_provider.dart';
+import 'package:pivot/pivot.dart';
 import 'package:test/test.dart';
 
 void main() {

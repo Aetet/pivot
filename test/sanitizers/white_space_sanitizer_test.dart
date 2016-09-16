@@ -1,4 +1,4 @@
-import 'package:pivot/src/sanitizers/white_space_sanitizer.dart';
+import 'package:pivot/pivot.dart';
 import 'package:test/test.dart';
 
 void main() {

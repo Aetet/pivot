@@ -1,4 +1,4 @@
-import 'package:pivot/src/formatters/date_value_formatter.dart';
+import 'package:pivot/pivot.dart';
 import 'package:test/test.dart';
 
 void main() {

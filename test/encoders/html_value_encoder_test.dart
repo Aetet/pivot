@@ -1,4 +1,4 @@
-import 'package:pivot/src/encoders/html_value_encoder.dart';
+import 'package:pivot/pivot.dart';
 import 'package:test/test.dart';
 
 void main() {
