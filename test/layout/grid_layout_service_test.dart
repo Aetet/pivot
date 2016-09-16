@@ -55,4 +55,44 @@ void main() {
     expect(rows[2].position, 65);
     expect(rows[3].position, 125);
   });
+
+  test('should return negative index when there is no rows', () {
+    expect(service.getRowIndex([], 10), -1);
+  });
+
+  test('should return zero index when position is below first row', () {
+    List<GridRow> rows = [
+      new GridRow()..position = 0,
+      new GridRow()..position = 25
+    ];
+
+    expect(service.getRowIndex(rows, -20), 0);
+  });
+
+  test('should return zero index when position is at start of first row', () {
+    List<GridRow> rows = [
+      new GridRow()..position = 0,
+      new GridRow()..position = 25
+    ];
+
+    expect(service.getRowIndex(rows, 0), 0);
+  });
+
+  test('should return zero index when position is at start of last row', () {
+    List<GridRow> rows = [
+      new GridRow()..position = 0,
+      new GridRow()..position = 25
+    ];
+
+    expect(service.getRowIndex(rows, 25), 1);
+  });
+
+  test('should return zero index when position is above last row', () {
+    List<GridRow> rows = [
+      new GridRow()..position = 0,
+      new GridRow()..position = 25
+    ];
+
+    expect(service.getRowIndex(rows, 30), 1);
+  });
 }
