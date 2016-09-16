@@ -60,39 +60,70 @@ void main() {
     expect(service.getRowIndex([], 10), -1);
   });
 
-  test('should return zero index when position is below first row', () {
+  test('should return correct index for 1 row', () {
     List<GridRow> rows = [
-      new GridRow()..position = 0,
-      new GridRow()..position = 25
+      new GridRow()..position = 0
     ];
 
-    expect(service.getRowIndex(rows, -20), 0);
-  });
-
-  test('should return zero index when position is at start of first row', () {
-    List<GridRow> rows = [
-      new GridRow()..position = 0,
-      new GridRow()..position = 25
-    ];
-
+    expect(service.getRowIndex(rows, -10), 0);
     expect(service.getRowIndex(rows, 0), 0);
+    expect(service.getRowIndex(rows, 20), 0);
   });
 
-  test('should return zero index when position is at start of last row', () {
+  test('should return correct index for 2 rows', () {
     List<GridRow> rows = [
       new GridRow()..position = 0,
       new GridRow()..position = 25
     ];
 
+    expect(service.getRowIndex(rows, -5), 0);
+    expect(service.getRowIndex(rows, 0), 0);
+    expect(service.getRowIndex(rows, 1), 0);
+    expect(service.getRowIndex(rows, 10), 0);
+    expect(service.getRowIndex(rows, 15), 0);
+    expect(service.getRowIndex(rows, 24), 0);
     expect(service.getRowIndex(rows, 25), 1);
+    expect(service.getRowIndex(rows, 30), 1);
+    expect(service.getRowIndex(rows, 50), 1);
   });
 
-  test('should return zero index when position is above last row', () {
+  test('should return correct index for 3 rows', () {
     List<GridRow> rows = [
       new GridRow()..position = 0,
-      new GridRow()..position = 25
+      new GridRow()..position = 60,
+      new GridRow()..position = 90
     ];
 
-    expect(service.getRowIndex(rows, 30), 1);
+    expect(service.getRowIndex(rows, -100), 0);
+    expect(service.getRowIndex(rows, 0), 0);
+    expect(service.getRowIndex(rows, 10), 0);
+    expect(service.getRowIndex(rows, 50), 0);
+    expect(service.getRowIndex(rows, 60), 1);
+    expect(service.getRowIndex(rows, 80), 1);
+    expect(service.getRowIndex(rows, 89), 1);
+    expect(service.getRowIndex(rows, 90), 2);
+    expect(service.getRowIndex(rows, 100), 2);
+    expect(service.getRowIndex(rows, 200), 2);
+  });
+
+  test('should return correct index for 4 rows', () {
+    List<GridRow> rows = [
+      new GridRow()..position = 0,
+      new GridRow()..position = 23,
+      new GridRow()..position = 60,
+      new GridRow()..position = 119
+    ];
+
+    expect(service.getRowIndex(rows, -1), 0);
+    expect(service.getRowIndex(rows, 0), 0);
+    expect(service.getRowIndex(rows, 15), 0);
+    expect(service.getRowIndex(rows, 20), 0);
+    expect(service.getRowIndex(rows, 23), 1);
+    expect(service.getRowIndex(rows, 50), 1);
+    expect(service.getRowIndex(rows, 60), 2);
+    expect(service.getRowIndex(rows, 100), 2);
+    expect(service.getRowIndex(rows, 115), 2);
+    expect(service.getRowIndex(rows, 119), 3);
+    expect(service.getRowIndex(rows, 200), 3);
   });
 }
