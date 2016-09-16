@@ -1,6 +1,6 @@
 name: pivot
 dependencies:
-  intl: any
+  intl: ^0.14.0
   quiver: '>=0.21.0<0.22.0'
 dev_dependencies:
-  test: any
+  test: ^0.12.15
