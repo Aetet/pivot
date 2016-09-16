@@ -5,7 +5,7 @@ void main() {
   KeyValueProvider provider = new KeyValueProvider('id');
 
   test('should extract value by key', () {
-    expect(provider.getValue({'id': 1}), equals(1));
+    expect(provider.getValue({'id': 1}), 1);
   });
 
   test('should extract null value by key', () {
