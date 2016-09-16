@@ -10,7 +10,6 @@ void main() {
   GridLayoutService service = new GridLayoutService(renderer, options);
 
   test('should calculate heights by rendering text', () {
-    // arrange
     GridCell cell1 = new GridCell()
       ..text = 'Some text'
       ..width = 100
@@ -28,17 +27,14 @@ void main() {
     when(renderer.getTextHeight('Some text', 90)).thenReturn(20);
     when(renderer.getTextHeight('Some very long text', 150)).thenReturn(40);
 
-    // act
     service.calculateHeights(rows);
 
-    // assert
     expect(cell1.height, 20);
     expect(cell2.height, 40);
     expect(row.height, 45);
   });
 
   test('should calculate positions by stacking heights', () {
-    // arrange
     List<GridRow> rows = [
       new GridRow()..height = 25,
       new GridRow()..height = 40,
@@ -46,10 +42,8 @@ void main() {
       new GridRow()..height = 40
     ];
 
-    // act
     service.calculatePositions(rows);
 
-    // assert
     expect(rows[0].position, 0);
     expect(rows[1].position, 25);
     expect(rows[2].position, 65);
