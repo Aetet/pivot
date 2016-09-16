@@ -15,4 +15,8 @@ void main() {
   test('should replace unicode spaces with regular spaces but not new lines', () {
     expect(sanitizer.sanitize('\u00a0\u180e\n\u2003'), equals('  \n '));
   });
+
+  test('should not change regular text', () {
+    expect(sanitizer.sanitize(' regular text. '), equals(' regular text. '));
+  });
 }
