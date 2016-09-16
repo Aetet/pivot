@@ -7,6 +7,6 @@ class KeyValueProvider implements ValueProvider<Map, Object> {
 
   @override
   Object getValue(Map element) {
-    return element[_key];
+    return element != null ? element[_key] : null;
   }
 }

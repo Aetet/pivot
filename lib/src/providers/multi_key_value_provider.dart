@@ -7,6 +7,6 @@ class MultiKeyValueProvider implements ValueProvider<Map, Object> {
 
   @override
   Object getValue(Map element) {
-    return _keys.fold(element, (Map value, String key) => value[key]);
+    return _keys.fold(element, (Map value, String key) => value != null ? value[key] : null);
   }
 }
