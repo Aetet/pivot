@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:benchmark_harness/benchmark_harness.dart';
 import 'package:pivot/pivot.dart';
 
@@ -14,13 +15,21 @@ class RowSearchBenchmark extends BenchmarkBase {
 
   RowSearchBenchmark() : super('RowSearch');
 
-  GridRow getRow(int index) {
-    return new GridRow()..position = index * (_random.nextInt(rowVariation) + rowHeight);
-  }
-
   @override
   void setup() {
-    _rows = new List.generate(rowCount, getRow);
+    _rows = new List<GridRow>(rowCount);
+
+    for (int i = 0; i < rowCount; i++) {
+      GridRow row = new GridRow();
+
+      if (i > 0) {
+        row.position = _rows[i - 1].position + rowHeight + _random.nextInt(rowVariation);
+      } else {
+        row.position = 0;
+      }
+
+      _rows[i] = row;
+    }
   }
 
   @override
