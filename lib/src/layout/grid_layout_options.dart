@@ -1,5 +1,5 @@
 class GridLayoutOptions {
-  final rowHeight;
+  final num rowHeight;
   final num borderWidth;
   final num paddingTop;
   final num paddingRight;
