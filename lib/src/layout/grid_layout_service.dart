@@ -47,17 +47,15 @@ class GridLayoutService {
     int high = rows.length - 1;
     num interpolation = 0;
 
-    while(low != high) {
+    while (low != high) {
       interpolation = low + (position - rows[low].position) * (high - low) / (rows[high].position - rows[low].position);
       middle = interpolation.floor();
 
       if (position < rows[middle].position) {
         high = middle - 1;
-      }
-      else if (position >= rows[middle + 1].position) {
+      } else if (position >= rows[middle + 1].position) {
         low = middle + 1;
-      }
-      else {
+      } else {
         return middle;
       }
     }
