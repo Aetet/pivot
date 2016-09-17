@@ -13,14 +13,18 @@ class GridLayoutService {
 
   void calculateHeights(List<GridRow> rows) {
     for (GridRow row in rows) {
-      row.height = _options.rowHeight;
+      num maxHeight = 0;
 
       for (GridCell cell in row.cells) {
-        cell.height = _renderer.getTextHeight(cell.text, cell.width - cell.styles.paddingLeft);
-        row.height = max(row.height, cell.height);
+        num paddingLeft = cell.styles.paddingLeft ?? _options.paddingLeft;
+        num contentWidth = cell.width - _options.borderWidth * 2 - paddingLeft - _options.paddingRight;
+        num contentHeight = _renderer.getTextHeight(cell.text, contentWidth);
+
+        maxHeight = max(maxHeight, contentHeight);
       }
 
-      row.height += _options.cellPadding;
+      num offsetHeight = maxHeight + _options.borderWidth * 2 + _options.paddingTop + _options.paddingBottom;
+      row.height = max(offsetHeight, _options.rowHeight);
     }
   }
 

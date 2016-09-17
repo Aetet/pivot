@@ -5,6 +5,5 @@ class GridCell {
   String text;
   String html;
   num width;
-  num height;
   GridCellStyles styles;
 }
