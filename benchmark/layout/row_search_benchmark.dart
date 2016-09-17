@@ -7,18 +7,20 @@ class RowSearchBenchmark extends BenchmarkBase {
   static const int rowHeight = 25;
   static const int rowVariation = 100;
 
+  final Random _random = new Random(0);
+  final GridLayoutService _service = new GridLayoutService(null, null);
+
   List<GridRow> _rows;
-  GridLayoutService _service;
 
   RowSearchBenchmark() : super('RowSearch');
 
+  GridRow getRow(int index) {
+    return new GridRow()..position = index * (_random.nextInt(rowVariation) + rowHeight);
+  }
+
   @override
   void setup() {
-    Random random = new Random(0);
-    _rows = new List.generate(rowCount,
-      (int index) => new GridRow()..position = index * (random.nextInt(rowVariation) + rowHeight));
-
-    _service = new GridLayoutService(null, null);
+    _rows = new List.generate(rowCount, getRow);
   }
 
   @override
