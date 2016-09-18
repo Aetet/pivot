@@ -24,13 +24,19 @@
 	font-size: 12px;
 	float: left;
 	padding: 8px;
-	cursor: default;
+	cursor: pointer;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: #8b9197;
 	border-right: 1px solid #d7d8d9;
 	border-bottom: 1px solid #c2c3c4;
-	background: #e6e6e6;
+	background-color: #e6e6e6;
+}
+
+.heading:hover {
+	border-bottom: 1px solid #5285b8;
+	background-color: #d9e1ea;
+	box-shadow: inset 0 -2px 0 0 #5285b8;
 }
 
 .viewport {
@@ -70,6 +76,13 @@
 
 .heading-zero {
 	width: 30px;
+	cursor: default;
+}
+
+.heading-zero:hover {
+	border-bottom: 1px solid #c2c3c4;
+	background-color: #e6e6e6;
+	box-shadow: none;
 }
 
 .cell-zero {
