@@ -1,9 +1,10 @@
+<!--suppress HtmlUnknownAttribute -->
 <div class="header">
   <div class="heading heading-zero">&nbsp;</div>
   <div class="heading"
-       *ngFor="let column of columns"
-       [style.width.px]="column.width">
-    {{column.title}}
+       *ngFor="let heading of state.headings"
+       [style.width.px]="heading.width">
+    {{heading.title}}
   </div>
 </div>
 

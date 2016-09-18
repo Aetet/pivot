@@ -9,6 +9,7 @@ export 'package:pivot/src/layout/grid_layout_service.dart';
 export 'package:pivot/src/models/grid_cell.dart';
 export 'package:pivot/src/models/grid_cell_styles.dart';
 export 'package:pivot/src/models/grid_column.dart';
+export 'package:pivot/src/models/grid_heading.dart';
 export 'package:pivot/src/models/grid_row.dart';
 export 'package:pivot/src/presenters/empty_value_presenter.dart';
 export 'package:pivot/src/presenters/value_presenter.dart';

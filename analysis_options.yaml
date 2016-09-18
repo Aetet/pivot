@@ -1,0 +1,10 @@
+analyzer:
+  strong-mode: true
+linter:
+  rules:
+    - annotate_overrides
+    - camel_case_types
+    - cancel_subscriptions
+    - constant_identifier_names
+    - implementation_imports
+    - valid_regexps

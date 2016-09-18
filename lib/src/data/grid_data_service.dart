@@ -1,10 +1,26 @@
 import 'package:angular2/di.dart';
 import 'package:pivot/src/models/grid_cell.dart';
 import 'package:pivot/src/models/grid_column.dart';
+import 'package:pivot/src/models/grid_heading.dart';
 import 'package:pivot/src/models/grid_row.dart';
 
 @Injectable()
 class GridDataService {
+  List<GridHeading> getHeadings(List<GridColumn> columns) {
+    List<GridHeading> headings = [];
+
+    for (GridColumn column in columns) {
+      GridHeading heading = new GridHeading();
+      heading.id = column.id;
+      heading.title = column.title;
+      heading.width = column.width;
+
+      headings.add(heading);
+    }
+
+    return headings;
+  }
+
   List<GridRow> getRows(List<Object> elements, List<GridColumn> columns) {
     List<GridRow> rows = [];
 
