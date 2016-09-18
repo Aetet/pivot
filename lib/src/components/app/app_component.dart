@@ -11,10 +11,9 @@ import 'package:pivot/src/providers/key_value_provider.dart';
   directives: const [GridComponent]
 )
 class AppComponent {
-  List<Object> elements = [
-    { 'id': 1, 'title': 'Reports', 'date': 1474187245000},
-    { 'id': 2, 'title': 'Request Forms', 'date': 1474273642000}
-  ];
+  List<Object> elements = new List.generate(1000, (int index) {
+    return {'id': index, 'title': 'Reports', 'date': 1474187245000};
+  });
 
   List<GridColumn> columns = [
     new GridColumn(

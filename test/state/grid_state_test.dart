@@ -10,6 +10,7 @@ void main() {
     expect(state.rows, []);
     expect(state.scrollTop, 0);
     expect(state.clientHeight, 0);
+    expect(state.scrollHeight, 0);
     expect(state.visibleRange, new GridVisibleRange(-1, -1));
     expect(state.visibleRows, []);
   });

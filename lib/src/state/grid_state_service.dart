@@ -17,6 +17,7 @@ class GridStateService {
     state.rows = _dataService.getRows(state.elements, state.columns);
     _layoutService.calculateHeights(state.rows);
     _layoutService.calculatePositions(state.rows);
+    state.scrollHeight = _layoutService.getScrollHeight(state.rows);
     state.visibleRange = _scrollingService.getVisibleRange(state.rows, state.scrollTop, state.clientHeight);
     state.visibleRows = _scrollingService.getVisibleRows(state.rows, state.visibleRange);
   }

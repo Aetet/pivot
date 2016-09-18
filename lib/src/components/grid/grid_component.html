@@ -7,10 +7,13 @@
   </div>
 </div>
 
-<div class="viewport">
-  <div class="body">
+<div ref-viewport
+     class="viewport"
+     (scroll)="onScroll()">
+  <div class="body"
+       [style.height.px]="state.scrollHeight">
     <div class="row"
-         *ngFor="let row of state.rows"
+         *ngFor="let row of state.visibleRows"
          [style.top.px]="row.position">
       <div class="cell cell-zero">&nbsp;</div>
       <div class="cell"

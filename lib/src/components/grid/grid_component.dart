@@ -35,9 +35,9 @@ import 'package:pivot/src/state/grid_state_service.dart';
 )
 class GridComponent implements OnChanges {
   final GridStateService _stateService;
-  int _requestId = 0;
-
   final GridState state = new GridState();
+
+  int _requestId = 0;
 
   @Input()
   List<Object> elements = [];
@@ -45,8 +45,8 @@ class GridComponent implements OnChanges {
   @Input()
   List<GridColumn> columns = [];
 
-  @ViewChild('body')
-  ElementRef bodyRef;
+  @ViewChild('viewport')
+  ElementRef viewportRef;
 
   GridComponent(this._stateService);
 
@@ -69,8 +69,8 @@ class GridComponent implements OnChanges {
   }
 
   void _onFrame(num time) {
-    Element body = bodyRef.nativeElement;
-    state.scrollTop = body.scrollTop;
+    Element viewport = viewportRef.nativeElement;
+    state.scrollTop = viewport.scrollTop;
     state.clientHeight = window.screen.height;
 
     _stateService.onViewportChange(state);

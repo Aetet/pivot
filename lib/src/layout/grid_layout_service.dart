@@ -39,6 +39,12 @@ class GridLayoutService {
     }
   }
 
+  num getScrollHeight(List<GridRow> rows) {
+    if (rows.length == 0) return 0;
+
+    return rows.last.position + rows.last.height;
+  }
+
   int getRowIndex(List<GridRow> rows, num position) {
     if (rows.length == 0) return -1;
     if (position <= rows.first.position) return 0;
