@@ -53,11 +53,9 @@ class GridLayoutService {
     int low = 0;
     int middle = 0;
     int high = rows.length - 1;
-    num interpolation = 0;
 
     while (low != high) {
-      interpolation = low + (position - rows[low].position) * (high - low) / (rows[high].position - rows[low].position);
-      middle = interpolation.floor();
+      middle = (low + (high - low) / 2).floor();
 
       if (position < rows[middle].position) {
         high = middle - 1;

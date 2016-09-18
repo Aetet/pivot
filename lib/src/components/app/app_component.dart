@@ -11,8 +11,16 @@ import 'package:pivot/src/providers/key_value_provider.dart';
   directives: const [GridComponent]
 )
 class AppComponent {
+  static List<String> titles = [
+    'Fix grouping by assignee',
+    'Inconsistent filters in tasklist and reports',
+    'Confirmation when pressing backspace while fields are out of focus',
+    'Support entering data in table view',
+    'Report for folder with a lot of custom fields'
+  ];
+
   List<Object> elements = new List.generate(1000, (int index) {
-    return {'id': index, 'title': 'Reports', 'date': 1474187245000};
+    return {'id': index, 'title': titles[index % titles.length], 'date': 1474187245000};
   });
 
   List<GridColumn> columns = [

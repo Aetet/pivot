@@ -15,11 +15,15 @@
     <div class="row"
          *ngFor="let row of state.visibleRows"
          [style.top.px]="row.position">
-      <div class="cell cell-zero">&nbsp;</div>
+      <div class="cell cell-zero"
+           [style.height.px]="row.height">
+        &nbsp;
+      </div>
       <div class="cell"
            *ngFor="let cell of row.cells"
            [innerHtml]="cell.html"
            [style.width.px]="cell.width"
+           [style.height.px]="row.height"
            [style.padding-left.px]="cell.styles.paddingLeft"
            [style.baclground-color]="cell.styles.backgroundColor">
 

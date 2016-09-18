@@ -28,7 +28,7 @@ class GridRenderingService {
   }
 
   int _getLineBreaksCount(String paragraph, num contentWidth) {
-    int linesBreaks = 0;
+    int linesBreaks = 1;
     num currentPosition = 0;
     List<String> words = paragraph.split(' ');
 
