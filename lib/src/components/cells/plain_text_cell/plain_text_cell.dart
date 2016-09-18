@@ -1,4 +1,5 @@
 import 'package:angular2/angular2.dart';
+import 'package:pivot/src/components/cells/cell.dart';
 import 'package:pivot/src/models/grid_cell.dart';
 
 @Component(
@@ -6,7 +7,7 @@ import 'package:pivot/src/models/grid_cell.dart';
   directives: const [],
   templateUrl: 'plain_text_cell.html'
 )
-class PlainTextCell {
+class PlainTextCell implements Cell {
   @Input()
   GridCell cell;
 }

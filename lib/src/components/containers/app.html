@@ -6,7 +6,7 @@
 <div *ngFor="let cell of cells" >
 	<cell-renderer
 		[cell]="cell"
-		[initViewProperties]="initViewProperties"
+		[initViewProperties]="initViewProperties(cell)"
 	>
 	</cell-renderer>
 </div>
