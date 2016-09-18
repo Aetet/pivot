@@ -1,0 +1,57 @@
+:host {
+	font-family: 'Open sans', sans-serif;
+}
+
+.header,
+.heading,
+.row,
+.cell {
+	box-sizing: border-box;
+}
+
+.header {
+	border-top: 1px solid #c2c3c4;
+	border-bottom: 1px solid #c2c3c4;
+	background-color: #e6e6e6;
+}
+
+.heading {
+	font-size: 12px;
+	float: left;
+	overflow: hidden;
+	padding: 8px;
+	cursor: default;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #8b9197;
+	border-right: 1px solid #d7d8d9;
+	border-bottom: 1px solid #c2c3c4;
+	background: #e6e6e6;
+}
+
+.cell {
+	font-size: 12px;
+	line-height: 20px;
+	float: left;
+	padding: 2px 8px;
+	color: #504f4f;
+	border: 1px transparent;
+	border-right: 1px solid #d7d8d9;
+	border-bottom: 1px solid #d7d8d9;
+}
+
+.header::after,
+.row::after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+.heading-zero {
+	width: 30px;
+}
+
+.cell-zero {
+	width: 30px;
+	background-color: #efeff0;
+}
