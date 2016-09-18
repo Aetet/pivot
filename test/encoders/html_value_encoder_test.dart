@@ -6,8 +6,8 @@ void main() {
 
   test('should encode text as html', () {
     String text = '<script>alert("xss")</script>';
-    String html = '&lt;script&gt;alert(&quot;xss&quot;)&lt;&#47;script&gt;';
+    String html = '&lt;script&gt;alert("xss")&lt;/script&gt;';
 
-    expect(encoder.getHtml(null, text), html);
+    expect(encoder.getHtml(text, null), html);
   });
 }

@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import '../mocks.dart';
 
 void main() {
-  GridLayoutOptions options = new GridLayoutOptions(
+  GridLayoutOptions layoutOptions = new GridLayoutOptions(
     rowHeight: 25,
     borderWidth: 1,
     paddingTop: 2,
@@ -14,8 +14,8 @@ void main() {
     paddingRight: 8
   );
 
-  GridRenderingService renderer = new GridRenderingServiceMock();
-  GridLayoutService service = new GridLayoutService(renderer, options);
+  GridRenderingService renderingService = new GridRenderingServiceMock();
+  GridLayoutService layoutService = new GridLayoutService(renderingService, layoutOptions);
 
   test('should calculate heights by rendering text', () {
     // arrange
@@ -33,11 +33,11 @@ void main() {
     row.cells.add(cell2);
     List<GridRow> rows = [row];
 
-    when(renderer.getTextHeight('Some text', 75)).thenReturn(20);
-    when(renderer.getTextHeight('Some very long text', 132)).thenReturn(40);
+    when(renderingService.getTextHeight('Some text', 75)).thenReturn(20);
+    when(renderingService.getTextHeight('Some very long text', 132)).thenReturn(40);
 
     // act
-    service.calculateHeights(rows);
+    layoutService.calculateHeights(rows);
 
     // assert
     expect(row.height, 46);
@@ -59,11 +59,11 @@ void main() {
     row.cells.add(cell2);
     List<GridRow> rows = [row];
 
-    when(renderer.getTextHeight('', 75)).thenReturn(0);
-    when(renderer.getTextHeight('', 132)).thenReturn(0);
+    when(renderingService.getTextHeight('', 75)).thenReturn(0);
+    when(renderingService.getTextHeight('', 132)).thenReturn(0);
 
     // act
-    service.calculateHeights(rows);
+    layoutService.calculateHeights(rows);
 
     // assert
     expect(row.height, 25);
@@ -79,7 +79,7 @@ void main() {
     ];
 
     // act
-    service.calculatePositions(rows);
+    layoutService.calculatePositions(rows);
 
     // assert
     expect(rows[0].position, 0);
@@ -89,7 +89,7 @@ void main() {
   });
 
   test('should return negative index when there is no rows', () {
-    expect(service.getRowIndex([], 10), -1);
+    expect(layoutService.getRowIndex([], 10), -1);
   });
 
   test('should return correct index for 1 row', () {
@@ -99,9 +99,9 @@ void main() {
     ];
 
     // act & assert
-    expect(service.getRowIndex(rows, -10), 0);
-    expect(service.getRowIndex(rows, 0), 0);
-    expect(service.getRowIndex(rows, 20), 0);
+    expect(layoutService.getRowIndex(rows, -10), 0);
+    expect(layoutService.getRowIndex(rows, 0), 0);
+    expect(layoutService.getRowIndex(rows, 20), 0);
   });
 
   test('should return correct index for 2 rows', () {
@@ -112,15 +112,15 @@ void main() {
     ];
 
     // act & assert
-    expect(service.getRowIndex(rows, -5), 0);
-    expect(service.getRowIndex(rows, 0), 0);
-    expect(service.getRowIndex(rows, 1), 0);
-    expect(service.getRowIndex(rows, 10), 0);
-    expect(service.getRowIndex(rows, 15), 0);
-    expect(service.getRowIndex(rows, 24), 0);
-    expect(service.getRowIndex(rows, 25), 1);
-    expect(service.getRowIndex(rows, 30), 1);
-    expect(service.getRowIndex(rows, 50), 1);
+    expect(layoutService.getRowIndex(rows, -5), 0);
+    expect(layoutService.getRowIndex(rows, 0), 0);
+    expect(layoutService.getRowIndex(rows, 1), 0);
+    expect(layoutService.getRowIndex(rows, 10), 0);
+    expect(layoutService.getRowIndex(rows, 15), 0);
+    expect(layoutService.getRowIndex(rows, 24), 0);
+    expect(layoutService.getRowIndex(rows, 25), 1);
+    expect(layoutService.getRowIndex(rows, 30), 1);
+    expect(layoutService.getRowIndex(rows, 50), 1);
   });
 
   test('should return correct index for 3 rows', () {
@@ -132,16 +132,16 @@ void main() {
     ];
 
     // act & assert
-    expect(service.getRowIndex(rows, -100), 0);
-    expect(service.getRowIndex(rows, 0), 0);
-    expect(service.getRowIndex(rows, 10), 0);
-    expect(service.getRowIndex(rows, 50), 0);
-    expect(service.getRowIndex(rows, 60), 1);
-    expect(service.getRowIndex(rows, 80), 1);
-    expect(service.getRowIndex(rows, 89), 1);
-    expect(service.getRowIndex(rows, 90), 2);
-    expect(service.getRowIndex(rows, 100), 2);
-    expect(service.getRowIndex(rows, 200), 2);
+    expect(layoutService.getRowIndex(rows, -100), 0);
+    expect(layoutService.getRowIndex(rows, 0), 0);
+    expect(layoutService.getRowIndex(rows, 10), 0);
+    expect(layoutService.getRowIndex(rows, 50), 0);
+    expect(layoutService.getRowIndex(rows, 60), 1);
+    expect(layoutService.getRowIndex(rows, 80), 1);
+    expect(layoutService.getRowIndex(rows, 89), 1);
+    expect(layoutService.getRowIndex(rows, 90), 2);
+    expect(layoutService.getRowIndex(rows, 100), 2);
+    expect(layoutService.getRowIndex(rows, 200), 2);
   });
 
   test('should return correct index for 4 rows', () {
@@ -154,16 +154,16 @@ void main() {
     ];
 
     // act & assert
-    expect(service.getRowIndex(rows, -1), 0);
-    expect(service.getRowIndex(rows, 0), 0);
-    expect(service.getRowIndex(rows, 15), 0);
-    expect(service.getRowIndex(rows, 20), 0);
-    expect(service.getRowIndex(rows, 23), 1);
-    expect(service.getRowIndex(rows, 50), 1);
-    expect(service.getRowIndex(rows, 60), 2);
-    expect(service.getRowIndex(rows, 100), 2);
-    expect(service.getRowIndex(rows, 115), 2);
-    expect(service.getRowIndex(rows, 119), 3);
-    expect(service.getRowIndex(rows, 200), 3);
+    expect(layoutService.getRowIndex(rows, -1), 0);
+    expect(layoutService.getRowIndex(rows, 0), 0);
+    expect(layoutService.getRowIndex(rows, 15), 0);
+    expect(layoutService.getRowIndex(rows, 20), 0);
+    expect(layoutService.getRowIndex(rows, 23), 1);
+    expect(layoutService.getRowIndex(rows, 50), 1);
+    expect(layoutService.getRowIndex(rows, 60), 2);
+    expect(layoutService.getRowIndex(rows, 100), 2);
+    expect(layoutService.getRowIndex(rows, 115), 2);
+    expect(layoutService.getRowIndex(rows, 119), 3);
+    expect(layoutService.getRowIndex(rows, 200), 3);
   });
 }

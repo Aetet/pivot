@@ -1,8 +1,10 @@
 import 'dart:html';
 
+import 'package:angular2/di.dart';
 import 'package:pivot/src/rendering/grid_rendering_context.dart';
 import 'package:pivot/src/rendering/grid_rendering_options.dart';
 
+@Injectable()
 class BrowserRenderingContext implements GridRenderingContext {
   final GridRenderingOptions _options;
   CanvasElement _canvas;

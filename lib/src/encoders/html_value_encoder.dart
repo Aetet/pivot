@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:pivot/src/encoders/value_encoder.dart';
 
 class HtmlValueEncoder implements ValueEncoder<Object> {
-  static final HtmlEscape _encoder = new HtmlEscape();
+  static final HtmlEscape _encoder = new HtmlEscape(HtmlEscapeMode.ELEMENT);
 
   const HtmlValueEncoder();
 
   @override
-  String getHtml(Object value, String text) {
+  String getHtml(String text, Object element) {
     return _encoder.convert(text);
   }
 }

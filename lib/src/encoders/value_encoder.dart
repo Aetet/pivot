@@ -1,3 +1,3 @@
 abstract class ValueEncoder<V> {
-  String getHtml(V value, String text);
+  String getHtml(String text, Object element);
 }
