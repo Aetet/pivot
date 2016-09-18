@@ -13,14 +13,18 @@ class GridLayoutService {
 
   void calculateHeights(List<GridRow> rows) {
     for (GridRow row in rows) {
-      row.height = _options.rowHeight;
+      num maxHeight = 0;
 
       for (GridCell cell in row.cells) {
-        cell.height = _renderer.getTextHeight(cell.text, cell.width - cell.styles.paddingLeft);
-        row.height = max(row.height, cell.height);
+        num paddingLeft = cell.styles.paddingLeft ?? _options.paddingLeft;
+        num contentWidth = cell.width - _options.borderWidth * 2 - paddingLeft - _options.paddingRight;
+        num contentHeight = _renderer.getTextHeight(cell.text, contentWidth);
+
+        maxHeight = max(maxHeight, contentHeight);
       }
 
-      row.height += _options.cellPadding;
+      num offsetHeight = maxHeight + _options.borderWidth * 2 + _options.paddingTop + _options.paddingBottom;
+      row.height = max(offsetHeight, _options.rowHeight);
     }
   }
 
@@ -41,20 +45,21 @@ class GridLayoutService {
     int low = 0;
     int middle = 0;
     int high = rows.length - 1;
+    num interpolation = 0;
 
-    while(low < high) {
-      middle = (low + (high - low) / 2).floor();
+    while (low != high) {
+      interpolation = low + (position - rows[low].position) * (high - low) / (rows[high].position - rows[low].position);
+      middle = interpolation.floor();
 
-      if (position >= rows[middle].position) {
-        if (low == middle) break;
-        low = middle;
-      }
-      else {
-        if (high == middle) break;
-        high = middle;
+      if (position < rows[middle].position) {
+        high = middle - 1;
+      } else if (position >= rows[middle + 1].position) {
+        low = middle + 1;
+      } else {
+        return middle;
       }
     }
 
-    return middle;
+    return low;
   }
 }

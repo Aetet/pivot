@@ -7,7 +7,7 @@ void main() {
   test('should return empty styles for any value', () {
     GridCellStyles styles = presenter.getStyles(null);
 
-    expect(styles.paddingLeft, 0);
+    expect(styles.paddingLeft, null);
     expect(styles.backgroundColor, null);
   });
 }
