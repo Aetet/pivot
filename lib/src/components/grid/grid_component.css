@@ -15,6 +15,9 @@
 }
 
 .header {
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
 	border-top: 1px solid #c2c3c4;
 	border-bottom: 1px solid #c2c3c4;
 	background-color: #e6e6e6;
@@ -22,7 +25,6 @@
 
 .heading {
 	font-size: 12px;
-	float: left;
 	padding: 8px;
 	cursor: pointer;
 	white-space: nowrap;
@@ -31,6 +33,7 @@
 	border-right: 1px solid #d7d8d9;
 	border-bottom: 1px solid #c2c3c4;
 	background-color: #e6e6e6;
+	flex: 0 0 auto;
 }
 
 .heading:hover {
@@ -54,24 +57,18 @@
 
 .row {
 	position: absolute;
+	display: flex;
+	flex-direction: row;
 }
 
 .cell {
 	font-size: 12px;
 	line-height: 20px;
-	float: left;
 	padding: 2px 8px;
 	color: #504f4f;
 	border: 1px transparent;
 	border-right: 1px solid #d7d8d9;
 	border-bottom: 1px solid #d7d8d9;
-}
-
-.header::after,
-.row::after {
-	display: block;
-	clear: both;
-	content: '';
 }
 
 .heading-zero {
