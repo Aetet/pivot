@@ -8,7 +8,7 @@ class HtmlValueEncoder implements ValueEncoder<Object> {
   const HtmlValueEncoder();
 
   @override
-  String getHtml(Object value, String text) {
+  String getHtml(String text, Object element) {
     return _encoder.convert(text);
   }
 }
