@@ -1,7 +1,9 @@
+import 'package:angular2/di.dart';
 import 'package:pivot/src/models/grid_cell.dart';
 import 'package:pivot/src/models/grid_column.dart';
 import 'package:pivot/src/models/grid_row.dart';
 
+@Injectable()
 class GridDataService {
   List<GridRow> getRows(List<Object> elements, List<GridColumn> columns) {
     List<GridRow> rows = [];

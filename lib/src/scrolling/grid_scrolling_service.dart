@@ -1,8 +1,10 @@
+import 'package:angular2/di.dart';
 import 'package:pivot/src/layout/grid_layout_service.dart';
 import 'package:pivot/src/models/grid_row.dart';
 import 'package:pivot/src/scrolling/grid_scrolling_options.dart';
 import 'package:pivot/src/scrolling/grid_visible_range.dart';
 
+@Injectable()
 class GridScrollingService {
   final GridLayoutService _layoutService;
   final GridScrollingOptions _scrollingOptions;

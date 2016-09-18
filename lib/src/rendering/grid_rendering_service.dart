@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:angular2/di.dart';
 import 'package:pivot/src/rendering/grid_rendering_context.dart';
 import 'package:pivot/src/rendering/grid_rendering_options.dart';
 
+@Injectable()
 class GridRenderingService {
   final GridRenderingContext _renderingContext;
   final GridRenderingOptions _renderingOptions;

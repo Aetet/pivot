@@ -1,5 +1,8 @@
+import 'package:angular2/di.dart';
+
+@Injectable()
 class GridScrollingOptions {
   final int excess;
 
-  GridScrollingOptions({this.excess});
+  const GridScrollingOptions({this.excess});
 }

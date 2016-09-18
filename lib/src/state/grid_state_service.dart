@@ -1,9 +1,11 @@
+import 'package:angular2/di.dart';
 import 'package:pivot/src/data/grid_data_service.dart';
 import 'package:pivot/src/layout/grid_layout_service.dart';
 import 'package:pivot/src/scrolling/grid_scrolling_service.dart';
 import 'package:pivot/src/scrolling/grid_visible_range.dart';
 import 'package:pivot/src/state/grid_state.dart';
 
+@Injectable()
 class GridStateService {
   final GridDataService _dataService;
   final GridLayoutService _layoutService;

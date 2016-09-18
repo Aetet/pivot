@@ -1,17 +1,20 @@
+import 'package:angular2/di.dart';
+
+@Injectable()
 class GridLayoutOptions {
   final num rowHeight;
   final num borderWidth;
   final num paddingTop;
-  final num paddingRight;
   final num paddingBottom;
   final num paddingLeft;
+  final num paddingRight;
 
-  GridLayoutOptions({
+  const GridLayoutOptions({
     this.rowHeight,
     this.borderWidth,
     this.paddingTop,
-    this.paddingRight,
     this.paddingBottom,
-    this.paddingLeft
+    this.paddingLeft,
+    this.paddingRight
   });
 }

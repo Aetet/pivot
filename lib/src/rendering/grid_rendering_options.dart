@@ -1,6 +1,9 @@
+import 'package:angular2/di.dart';
+
+@Injectable()
 class GridRenderingOptions {
   final String font;
   final num lineHeight;
 
-  GridRenderingOptions({this.font, this.lineHeight});
+  const GridRenderingOptions({this.font, this.lineHeight});
 }

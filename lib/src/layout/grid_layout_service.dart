@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:angular2/di.dart';
 import 'package:pivot/src/layout/grid_layout_options.dart';
 import 'package:pivot/src/models/grid_cell.dart';
 import 'package:pivot/src/models/grid_row.dart';
 import 'package:pivot/src/rendering/grid_rendering_service.dart';
 
+@Injectable()
 class GridLayoutService {
   final GridRenderingService _renderingService;
   final GridLayoutOptions _layoutOptions;
