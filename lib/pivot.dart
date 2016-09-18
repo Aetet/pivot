@@ -24,3 +24,5 @@ export 'package:pivot/src/sanitizers/white_space_sanitizer.dart';
 export 'package:pivot/src/scrolling/grid_scrolling_options.dart';
 export 'package:pivot/src/scrolling/grid_scrolling_service.dart';
 export 'package:pivot/src/scrolling/grid_visible_range.dart';
+export 'package:pivot/src/state/grid_state.dart';
+export 'package:pivot/src/state/grid_state_service.dart';

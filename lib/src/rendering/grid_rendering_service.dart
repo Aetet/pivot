@@ -4,14 +4,14 @@ import 'package:pivot/src/rendering/grid_rendering_context.dart';
 import 'package:pivot/src/rendering/grid_rendering_options.dart';
 
 class GridRenderingService {
-  final GridRenderingContext _context;
-  final GridRenderingOptions _options;
+  final GridRenderingContext _renderingContext;
+  final GridRenderingOptions _renderingOptions;
   int _spaceWidth;
 
-  GridRenderingService(this._context, this._options);
+  GridRenderingService(this._renderingContext, this._renderingOptions);
 
   num getTextHeight(String text, num contentWidth) {
-    return _getLinesOfTextCount(text, contentWidth) * _options.lineHeight;
+    return _getLinesOfTextCount(text, contentWidth) * _renderingOptions.lineHeight;
   }
 
   int _getLinesOfTextCount(String text, num contentWidth) {
@@ -30,10 +30,10 @@ class GridRenderingService {
     num currentPosition = 0;
     List<String> words = paragraph.split(' ');
 
-    _spaceWidth = _spaceWidth ?? _context.getTextWidth(' ');
+    _spaceWidth = _spaceWidth ?? _renderingContext.getTextWidth(' ');
 
     for (String word in words) {
-      num wordWidth = _context.getTextWidth(word);
+      num wordWidth = _renderingContext.getTextWidth(word);
 
       // if word exceeds available width, move to next line
       if (currentPosition + wordWidth > contentWidth && currentPosition > 0) {

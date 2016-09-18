@@ -4,7 +4,7 @@ class GridVisibleRange {
   final int first;
   final int last;
 
-  GridVisibleRange(this.first, this.last);
+  const GridVisibleRange(this.first, this.last);
 
   @override
   bool operator ==(dynamic other) {

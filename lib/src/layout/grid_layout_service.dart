@@ -6,25 +6,25 @@ import 'package:pivot/src/models/grid_row.dart';
 import 'package:pivot/src/rendering/grid_rendering_service.dart';
 
 class GridLayoutService {
-  final GridRenderingService _renderer;
-  final GridLayoutOptions _options;
+  final GridRenderingService _renderingService;
+  final GridLayoutOptions _layoutOptions;
 
-  GridLayoutService(this._renderer, this._options);
+  GridLayoutService(this._renderingService, this._layoutOptions);
 
   void calculateHeights(List<GridRow> rows) {
     for (GridRow row in rows) {
       num maxHeight = 0;
 
       for (GridCell cell in row.cells) {
-        num paddingLeft = cell.styles.paddingLeft ?? _options.paddingLeft;
-        num contentWidth = cell.width - _options.borderWidth * 2 - paddingLeft - _options.paddingRight;
-        num contentHeight = _renderer.getTextHeight(cell.text, contentWidth);
+        num paddingLeft = cell.styles.paddingLeft ?? _layoutOptions.paddingLeft;
+        num contentWidth = cell.width - _layoutOptions.borderWidth * 2 - paddingLeft - _layoutOptions.paddingRight;
+        num contentHeight = _renderingService.getTextHeight(cell.text, contentWidth);
 
         maxHeight = max(maxHeight, contentHeight);
       }
 
-      num offsetHeight = maxHeight + _options.borderWidth * 2 + _options.paddingTop + _options.paddingBottom;
-      row.height = max(offsetHeight, _options.rowHeight);
+      num offsetHeight = maxHeight + _layoutOptions.borderWidth * 2 + _layoutOptions.paddingTop + _layoutOptions.paddingBottom;
+      row.height = max(offsetHeight, _layoutOptions.rowHeight);
     }
   }
 
