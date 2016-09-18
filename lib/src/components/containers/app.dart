@@ -12,7 +12,7 @@ import 'package:pivot/src/typedefs/InitViewProperties.dart';
   ],
   templateUrl: 'app.html'
 )
-class AppComponent implements OnInit {
+class AppComponent {
   InitViewProperties initViewProperties = (dynamic instance, GridCell cell) {
     if (instance is LinkCell) {
       instance.href = 'JohnDoe';
@@ -29,9 +29,4 @@ class AppComponent implements OnInit {
       ..CellType = PlainTextCell
 
   ];
-  @override
-  ngOnInit() {
-    // cells = [
-    // ];
-  }
 }
