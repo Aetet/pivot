@@ -6,8 +6,8 @@ class GridState {
   List<Object> elements = [];
   List<GridColumn> columns = [];
   List<GridRow> rows = [];
-  num scrollTop;
-  num clientHeight;
+  num scrollTop = 0;
+  num clientHeight = 0;
   GridVisibleRange visibleRange = new GridVisibleRange(-1, -1);
   List<GridRow> visibleRows = [];
 }

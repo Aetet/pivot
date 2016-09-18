@@ -19,11 +19,7 @@ class GridStateService {
     state.visibleRows = _scrollingService.getVisibleRows(state.rows, state.visibleRange);
   }
 
-  void onColumnsChange(GridState state) {
-    onElementsChange(state);
-  }
-
-  void onScrollChange(GridState state) {
+  void onViewportChange(GridState state) {
     GridVisibleRange visibleRange = _scrollingService.getVisibleRange(state.rows, state.scrollTop, state.clientHeight);
     if (visibleRange != state.visibleRange) {
       state.visibleRange = visibleRange;
