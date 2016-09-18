@@ -29,4 +29,8 @@ class AppComponent {
       ..CellType = PlainTextCell
 
   ];
+
+  handleClick() {
+    cells[0].value = 'Likan';
+  }
 }
