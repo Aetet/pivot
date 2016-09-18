@@ -1,0 +1,12 @@
+<div>
+	Working!
+</div>
+
+
+<div *ngFor="let cell of cells" >
+	<cell-renderer
+		[cell]="cell"
+		[initViewProperties]="initViewProperties"
+	>
+	</cell-renderer>
+</div>

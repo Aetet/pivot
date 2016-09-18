@@ -7,4 +7,5 @@ class GridCell {
   num width;
   num height;
   GridCellStyles styles;
+  Type CellType;
 }
