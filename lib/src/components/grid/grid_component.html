@@ -7,15 +7,20 @@
   </div>
 </div>
 
-<div class="row"
-     *ngFor="let row of state.rows">
-  <div class="cell cell-zero">&nbsp;</div>
-  <div class="cell"
-       *ngFor="let cell of row.cells"
-       [innerHtml]="cell.html"
-       [style.width.px]="cell.width"
-       [style.padding-left.px]="cell.styles.paddingLeft"
-       [style.baclground-color]="cell.styles.backgroundColor">
+<div class="viewport">
+  <div class="body">
+    <div class="row"
+         *ngFor="let row of state.rows"
+         [style.top.px]="row.position">
+      <div class="cell cell-zero">&nbsp;</div>
+      <div class="cell"
+           *ngFor="let cell of row.cells"
+           [innerHtml]="cell.html"
+           [style.width.px]="cell.width"
+           [style.padding-left.px]="cell.styles.paddingLeft"
+           [style.baclground-color]="cell.styles.backgroundColor">
 
+      </div>
+  </div>
   </div>
 </div>

@@ -1,9 +1,14 @@
 :host {
 	font-family: 'Open sans', sans-serif;
+	position: relative;
+	display: block;
+	height: 100%;
 }
 
 .header,
 .heading,
+.viewport,
+.body,
 .row,
 .cell {
 	box-sizing: border-box;
@@ -18,7 +23,6 @@
 .heading {
 	font-size: 12px;
 	float: left;
-	overflow: hidden;
 	padding: 8px;
 	cursor: default;
 	white-space: nowrap;
@@ -27,6 +31,23 @@
 	border-right: 1px solid #d7d8d9;
 	border-bottom: 1px solid #c2c3c4;
 	background: #e6e6e6;
+}
+
+.viewport {
+	position: absolute;
+	top: 36px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+}
+
+.body {
+	position: relative;
+}
+
+.row {
+	position: absolute;
 }
 
 .cell {
@@ -54,4 +75,25 @@
 .cell-zero {
 	width: 30px;
 	background-color: #efeff0;
+}
+
+.viewport::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+}
+
+.viewport::-webkit-scrollbar-corner {
+	background-color: #eaebec;
+}
+
+.viewport::-webkit-scrollbar-thumb {
+	background-color: #d1d2d3;;
+}
+
+.viewport::-webkit-scrollbar-thumb:hover {
+	background-color: #c6c7c8;;
+}
+
+.viewport::-webkit-scrollbar-track {
+	background-color: #eaebec;;
 }
