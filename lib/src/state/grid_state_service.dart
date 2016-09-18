@@ -11,7 +11,7 @@ class GridStateService {
 
   GridStateService(this._dataService, this._layoutService, this._scrollingService);
 
-  void onElementsChange(GridState state) {
+  void onDataChange(GridState state) {
     state.rows = _dataService.getRows(state.elements, state.columns);
     _layoutService.calculateHeights(state.rows);
     _layoutService.calculatePositions(state.rows);
