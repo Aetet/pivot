@@ -14,6 +14,8 @@ import 'package:pivot/src/rendering/grid_rendering_options.dart';
 import 'package:pivot/src/rendering/grid_rendering_service.dart';
 import 'package:pivot/src/scrolling/grid_scrolling_options.dart';
 import 'package:pivot/src/scrolling/grid_scrolling_service.dart';
+import 'package:pivot/src/sorting/grid_sorting_service.dart';
+import 'package:pivot/src/sorting/grid_sorting_settings.dart';
 import 'package:pivot/src/state/grid_state.dart';
 import 'package:pivot/src/state/grid_state_service.dart';
 
@@ -25,6 +27,7 @@ import 'package:pivot/src/state/grid_state_service.dart';
     GridStateService,
     GridDataService,
     GridLayoutService,
+    GridSortingService,
     GridScrollingService,
     GridRenderingService,
     const Provider(GridRenderingContext, useClass: BrowserRenderingContext),
@@ -45,6 +48,9 @@ class GridComponent implements OnChanges {
   @Input()
   List<GridColumn> columns = [];
 
+  @Input()
+  GridSortingSettings sortingSettings = const GridSortingSettings();
+
   @ViewChild('viewport')
   ElementRef viewportRef;
 
@@ -52,15 +58,12 @@ class GridComponent implements OnChanges {
 
   @override
   void ngOnChanges(Map<String, SimpleChange> changes) {
-    bool isDataChanged = changes.containsKey('elements') || changes.containsKey('columns');
+    state.elements = elements;
+    state.columns = columns;
+    state.sortingSettings = sortingSettings;
+    state.clientHeight = window.screen.height;
 
-    if (isDataChanged) {
-      state.elements = elements;
-      state.columns = columns;
-      state.clientHeight = window.screen.height;
-
-      _stateService.onDataChange(state);
-    }
+    _stateService.onDataChange(state);
   }
 
   void onScroll() {

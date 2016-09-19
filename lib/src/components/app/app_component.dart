@@ -1,8 +1,11 @@
 import 'package:angular2/core.dart';
+import 'package:pivot/src/comparators/value_cell_comparator.dart';
 import 'package:pivot/src/components/grid/grid_component.dart';
 import 'package:pivot/src/formatters/date_value_formatter.dart';
 import 'package:pivot/src/models/grid_column.dart';
+import 'package:pivot/src/models/grid_sorting_direction.dart';
 import 'package:pivot/src/providers/key_value_provider.dart';
+import 'package:pivot/src/sorting/grid_sorting_settings.dart';
 
 @Component(
   selector: 'pivot-app',
@@ -28,7 +31,8 @@ class AppComponent {
       id: 'id',
       title: 'ID',
       width: 100,
-      provider: new KeyValueProvider('id')
+      provider: new KeyValueProvider('id'),
+      comparator: new ValueCellComparator()
     ),
     new GridColumn(
       id: 'title',
@@ -41,7 +45,13 @@ class AppComponent {
       title: 'Date',
       width: 120,
       provider: new KeyValueProvider('date'),
-      formatter: new DateValueFormatter('MM/dd/yyyy')
+      formatter: new DateValueFormatter('MM/dd/yyyy'),
+      comparator: new ValueCellComparator()
     )
   ];
+
+  GridSortingSettings sortingSettings = new GridSortingSettings(
+    id: 'id',
+    direction: GridSortingDirection.ascending
+  );
 }

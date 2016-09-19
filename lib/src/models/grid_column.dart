@@ -1,3 +1,5 @@
+import 'package:pivot/src/comparators/grid_cell_comparator.dart';
+import 'package:pivot/src/comparators/text_cell_comparator.dart';
 import 'package:pivot/src/encoders/html_value_encoder.dart';
 import 'package:pivot/src/encoders/value_encoder.dart';
 import 'package:pivot/src/formatters/text_value_formatter.dart';
@@ -18,6 +20,7 @@ class GridColumn {
   final ValueSanitizer sanitizer;
   final ValueEncoder encoder;
   final ValuePresenter presenter;
+  final GridCellComparator comparator;
 
   GridColumn({
     this.id,
@@ -27,6 +30,7 @@ class GridColumn {
     this.formatter: const TextValueFormatter(),
     this.sanitizer: const WhiteSpaceSanitizer(),
     this.encoder: const HtmlValueEncoder(),
-    this.presenter: const EmptyValuePresenter()
+    this.presenter: const EmptyValuePresenter(),
+    this.comparator: const TextCellComparator()
   });
 }
