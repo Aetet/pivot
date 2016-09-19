@@ -20,7 +20,7 @@ class AppComponent {
   ];
 
   List<Object> elements = new List.generate(1000, (int index) {
-    return {'id': index, 'title': titles[index % titles.length], 'date': 1474187245000};
+    return {'id': index, 'title': titles[index % titles.length], 'date': 86400000 * index};
   });
 
   List<GridColumn> columns = [
