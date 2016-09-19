@@ -22,7 +22,7 @@ class AppComponent {
     'Report for folder with a lot of custom fields'
   ];
 
-  List<Object> elements = new List.generate(1000, (int index) {
+  List<Object> elements = new List.generate(100000, (int index) {
     return {'id': index, 'title': titles[index % titles.length], 'date': 86400000 * index};
   });
 
