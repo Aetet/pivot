@@ -3,8 +3,16 @@
   <div class="heading heading-zero">&nbsp;</div>
   <div class="heading"
        *ngFor="let heading of state.headings"
-       [style.width.px]="heading.width">
-    {{heading.title}}
+       [class.heading-selected]="heading.direction != null"
+       [style.width.px]="heading.width"
+       (click)="onHeadingClick(heading)">
+    <span class="heading-title">{{heading.title}}</span>
+    <span
+      *ngIf="heading.direction != null"
+      class="heading-direction"
+      [class.heading-direction-ascending]="isSortingAscending(heading.direction)"
+      [class.heading-direction-descending]="isSortingDescending(heading.direction)">
+    </span>
   </div>
 </div>
 

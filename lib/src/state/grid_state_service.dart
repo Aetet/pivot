@@ -28,6 +28,7 @@ class GridStateService {
   }
 
   void onSortingChange(GridState state) {
+    state.sortingSettings = _sortingService.flipSorting(state.sortingHeading, state.sortingSettings);
     _sortingService.sortHeadings(state.headings, state.sortingSettings);
     _sortingService.sortRows(state.rows, state.columns, state.sortingSettings);
     _layoutService.calculatePositions(state.rows);

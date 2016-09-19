@@ -19,8 +19,20 @@ class GridSortingService {
     if (column == null) return;
 
     int index = columns.indexOf(column);
-    int sign = settings.direction == GridSortingDirection.descending ? -1 : 1;
+    int sign = settings.direction == GridSortingDirection.ascending ? 1 : -1;
     GridRowComparator comparator = new GridRowComparator(column.comparator, index, sign);
     rows.sort(comparator);
+  }
+
+  GridSortingSettings flipSorting(GridHeading heading, GridSortingSettings settings) {
+    GridSortingDirection direction;
+
+    if (settings.id == heading.id) {
+      direction = settings.direction == GridSortingDirection.ascending ? GridSortingDirection.descending : GridSortingDirection.ascending;
+    } else {
+      direction = GridSortingDirection.descending;
+    }
+
+    return new GridSortingSettings(id: heading.id, direction: direction);
   }
 }

@@ -8,6 +8,8 @@ import 'package:pivot/src/factories/grid_scrolling_options_factory.dart';
 import 'package:pivot/src/layout/grid_layout_options.dart';
 import 'package:pivot/src/layout/grid_layout_service.dart';
 import 'package:pivot/src/models/grid_column.dart';
+import 'package:pivot/src/models/grid_heading.dart';
+import 'package:pivot/src/models/grid_sorting_direction.dart';
 import 'package:pivot/src/rendering/browser_rendering_context.dart';
 import 'package:pivot/src/rendering/grid_rendering_context.dart';
 import 'package:pivot/src/rendering/grid_rendering_options.dart';
@@ -64,6 +66,19 @@ class GridComponent implements OnChanges {
     state.clientHeight = window.screen.height;
 
     _stateService.onDataChange(state);
+  }
+
+  bool isSortingAscending(GridSortingDirection direction) {
+    return direction == GridSortingDirection.ascending;
+  }
+
+  bool isSortingDescending(GridSortingDirection direction) {
+    return direction == GridSortingDirection.descending;
+  }
+
+  void onHeadingClick(GridHeading heading) {
+    state.sortingHeading = heading;
+    _stateService.onSortingChange(state);
   }
 
   void onScroll() {

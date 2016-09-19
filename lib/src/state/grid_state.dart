@@ -12,6 +12,7 @@ class GridState {
   num scrollTop = 0;
   num clientHeight = 0;
   num scrollHeight = 0;
+  GridHeading sortingHeading;
   GridSortingSettings sortingSettings = new GridSortingSettings();
   GridVisibleRange visibleRange = new GridVisibleRange(-1, -1);
   List<GridRow> visibleRows = [];
