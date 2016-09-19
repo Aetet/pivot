@@ -24,10 +24,14 @@
 }
 
 .heading {
-	position: relative;
 	font-size: 12px;
+	position: relative;
 	padding: 8px;
 	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	color: #8b9197;
