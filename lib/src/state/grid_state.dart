@@ -16,4 +16,6 @@ class GridState {
   GridSortingSettings sortingSettings = new GridSortingSettings();
   GridVisibleRange visibleRange = new GridVisibleRange(-1, -1);
   List<GridRow> visibleRows = [];
+
+  List<String> visibleColumns = [];
 }

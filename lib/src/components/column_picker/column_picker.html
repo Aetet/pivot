@@ -1,0 +1,10 @@
+<div>
+  <span *ngFor="let column of columns">
+    <label>{{column.id}}</label>
+    <input
+      (click)="handleClick(column, $event.target.checked)"
+      type="checkbox"
+      [checked]="visibleColumns.contains(column.id)"
+    />
+  </span>
+</div>

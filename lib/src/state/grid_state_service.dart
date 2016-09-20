@@ -16,11 +16,11 @@ class GridStateService {
   GridStateService(this._dataService, this._layoutService, this._sortingService, this._scrollingService);
 
   void onDataChange(GridState state) {
-    state.headings = _dataService.getHeadings(state.columns);
-    state.rows = _dataService.getRows(state.elements, state.columns);
+    state.headings = _dataService.getHeadings(_dataService.getVisibleColumns(state.visibleColumns, state.columns));
+    state.rows = _dataService.getRows(state.elements, _dataService.getVisibleColumns(state.visibleColumns, state.columns));
     _layoutService.calculateHeights(state.rows);
     _sortingService.sortHeadings(state.headings, state.sortingSettings);
-    _sortingService.sortRows(state.rows, state.columns, state.sortingSettings);
+    _sortingService.sortRows(state.rows, _dataService.getVisibleColumns(state.visibleColumns, state.columns), state.sortingSettings);
     _layoutService.calculatePositions(state.rows);
     state.scrollHeight = _layoutService.getScrollHeight(state.rows);
     state.visibleRange = _scrollingService.getVisibleRange(state.rows, state.scrollTop, state.clientHeight);
@@ -30,7 +30,7 @@ class GridStateService {
   void onSortingChange(GridState state) {
     state.sortingSettings = _sortingService.flipSorting(state.sortingHeading, state.sortingSettings);
     _sortingService.sortHeadings(state.headings, state.sortingSettings);
-    _sortingService.sortRows(state.rows, state.columns, state.sortingSettings);
+    _sortingService.sortRows(state.rows, _dataService.getVisibleColumns(state.visibleColumns, state.columns), state.sortingSettings);
     _layoutService.calculatePositions(state.rows);
     state.scrollHeight = _layoutService.getScrollHeight(state.rows);
     state.visibleRange = _scrollingService.getVisibleRange(state.rows, state.scrollTop, state.clientHeight);

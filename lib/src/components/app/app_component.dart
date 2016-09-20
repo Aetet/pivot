@@ -21,9 +21,27 @@ class AppComponent {
     'Support entering data in table view',
     'Report for folder with a lot of custom fields'
   ];
+  static List<String> authors = [
+    'John Doe',
+    'Marilyn Monroe',
+    'Jane Doe',
+    'Madao',
+    'Sackville Baggins',
+    'Leonarm Nimoy',
+    'Captain Kirk'
+  ];
+  List visibleColumns = [
+    'title',
+    'author'
+  ];
 
-  List<Object> elements = new List.generate(100000, (int index) {
-    return {'id': index, 'title': titles[index % titles.length], 'date': 86400000 * index};
+  List<Object> elements = new List.generate(1000, (int index) {
+    return {
+      'id': index,
+      'title': titles[index % titles.length],
+      'date': 86400000 * index,
+      'author': authors[index%titles.length]
+    };
   });
 
   List<GridColumn> columns = [
@@ -47,6 +65,12 @@ class AppComponent {
       provider: new KeyValueProvider('date'),
       formatter: new DateValueFormatter('MM/dd/yyyy'),
       comparator: new ValueCellComparator()
+    ),
+    new GridColumn(
+      id: 'author',
+      title: 'Author',
+      width: 110,
+      provider: new KeyValueProvider('author')
     )
   ];
 

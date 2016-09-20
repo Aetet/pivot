@@ -1,4 +1,9 @@
 <!--suppress HtmlUnknownTag, HtmlUnknownAttribute -->
+<column-picker
+  [visibleColumns]="state.visibleColumns"
+  [columns]="state.columns"
+  (changedVisibleColumns)="onChangeVisibleColumns($event)"
+></column-picker>
 <div class="header">
   <div class="heading heading-zero">&nbsp;</div>
   <div class="heading"

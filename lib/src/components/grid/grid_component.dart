@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:angular2/core.dart';
+import 'package:pivot/src/components/column_picker/column_picker.dart';
 import 'package:pivot/src/data/grid_data_service.dart';
 import 'package:pivot/src/factories/grid_layout_options_factory.dart';
 import 'package:pivot/src/factories/grid_rendering_options_factory.dart';
@@ -25,6 +26,9 @@ import 'package:pivot/src/state/grid_state_service.dart';
   selector: 'pivot-grid',
   templateUrl: 'grid_component.html',
   styleUrls: const ['grid_component.css'],
+  directives: const [
+    ColumnPicker
+  ],
   providers: const [
     GridStateService,
     GridDataService,
@@ -51,6 +55,9 @@ class GridComponent implements OnChanges {
   List<GridColumn> columns = [];
 
   @Input()
+  List<String> visibleColumns;
+
+  @Input()
   GridSortingSettings sortingSettings = const GridSortingSettings();
 
   @ViewChild('viewport')
@@ -60,6 +67,10 @@ class GridComponent implements OnChanges {
 
   @override
   void ngOnChanges(Map<String, SimpleChange> changes) {
+    if (visibleColumns == null) {
+      visibleColumns = columns.map((GridColumn column) => column.id);
+    }
+    state.visibleColumns = visibleColumns;
     state.elements = elements;
     state.columns = columns;
     state.sortingSettings = sortingSettings;
@@ -79,6 +90,11 @@ class GridComponent implements OnChanges {
   void onHeadingClick(GridHeading heading) {
     state.sortingHeading = heading;
     _stateService.onSortingChange(state);
+  }
+
+  void onChangeVisibleColumns(List<String> changedVisibleColumns) {
+    state.visibleColumns = changedVisibleColumns;
+    _stateService.onDataChange(state);
   }
 
   void onScroll() {

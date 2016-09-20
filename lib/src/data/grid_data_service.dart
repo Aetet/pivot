@@ -6,6 +6,17 @@ import 'package:pivot/src/models/grid_row.dart';
 
 @Injectable()
 class GridDataService {
+  List<GridColumn> getVisibleColumns(List<String> visibleColumns, List<GridColumn> columns) {
+    return visibleColumns.fold([], (List<GridColumn> resultColumns, String visibleColumn) {
+      GridColumn resultVisibleColumn = columns.firstWhere((GridColumn column) {
+        return column.id == visibleColumn;
+      }, orElse: () => null);
+      if (resultVisibleColumn != null) {
+        resultColumns.add(resultVisibleColumn);
+      }
+      return resultColumns;
+    });
+  }
   List<GridHeading> getHeadings(List<GridColumn> columns) {
     List<GridHeading> headings = [];
 
